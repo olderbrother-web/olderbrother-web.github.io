@@ -1,0 +1,991 @@
+/* Global Styles */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    color: #fff;
+    transition: background-color 0.3s ease;
+    overflow-x: hidden;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background-color: transparent;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+header:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #fff;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+nav ul li a:hover::after {
+    transform: scaleX(1);
+}
+
+main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 20px;
+}
+
+h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    transition: all 0.3s ease;
+    position: relative; /* Add this */
+}
+
+h1:hover {
+    letter-spacing: 10px;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+/* Landing Page Styles */
+.landing {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.landing h1 {
+    font-size: 4rem;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #fff;
+    color: #000;
+    text-decoration: none;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: all 0.5s;
+}
+
+.cta-button:hover::before {
+    left: 100%;
+}
+
+.cta-button:hover {
+    background-color: #888;
+    color: #fff;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+/* Product Page Styles */
+.products {
+    padding: 80px 20px;
+}
+
+#product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.product-card {
+    background-color: #000;
+    border: 1px solid #fff;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-image-container {
+    position: relative;
+    padding-top: 100%; /* 1:1 Aspect Ratio */
+    overflow: hidden;
+}
+
+.product-image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.product-card h3 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.product-card p {
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.product-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #000;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+}
+
+.product-card:hover .product-image-container img {
+    transform: scale(1.1);
+}
+
+.product-card:hover h3 {
+    color: #ccc;
+}
+
+.product-link:hover {
+    background-color: #ccc;
+}
+
+@media (max-width: 768px) {
+    #product-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    #product-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Contact Page Styles */
+.contact {
+    text-align: center;
+}
+
+.contact-options {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.contact-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: all 0.5s;
+}
+
+.contact-button:hover::before {
+    left: 100%;
+}
+
+.contact-button img {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+    filter: brightness(0) invert(1);
+}
+
+.contact-button span {
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.contact-button:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+}
+
+.contact-button:hover img {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.contact-button:hover span {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #1a1a1a;
+    transition: all 0.3s ease;
+}
+
+footer:hover {
+    background-color: #2a2a2a;
+    box-shadow: 0 -5px 15px rgba(255, 255, 255, 0.1);
+}
+
+footer p {
+    transition: all 0.3s ease;
+}
+
+footer:hover p {
+    transform: scale(1.05);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Add a subtle animation to the landing page */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.landing h1,
+.landing p,
+.landing .cta-button {
+    animation: fadeIn 1s ease-out forwards;
+    opacity: 0;
+}
+
+.landing p {
+    animation-delay: 0.3s;
+}
+
+.landing .cta-button {
+    animation-delay: 0.6s;
+}
+
+/* Add a glitch effect to the main title */
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+
+h1:hover {
+    animation: glitch 0.5s cubic-bezier(.25, .46, .45, .94) both infinite;
+}
+
+/* Add a loading animation */
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+}
+
+.loading.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: 'OLDER BROTHER';
+    font-size: 2rem;
+    letter-spacing: 5px;
+    animation: loadingText 2s infinite;
+}
+
+@keyframes loadingText {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+/* Add scroll-based reveal animation */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.animate-on-scroll.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Add these styles to your existing CSS file */
+
+/* Shaking text effect */
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+.shake-on-hover:hover {
+  animation: shake 0.5s;
+  animation-iteration-count: infinite;
+}
+
+/* Custom cursor styles */
+body {
+  cursor: none;
+}
+
+.custom-cursor {
+  width: 20px;
+  height: 20px;
+  border: 2px solid white;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transition: all 0.1s ease;
+}
+
+.custom-cursor-dot {
+  width: 4px;
+  height: 4px;
+  background-color: white;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Guide page styles */
+.guide {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.guide h2 {
+  margin-top: 40px;
+}
+
+.guide ol {
+  margin-left: 20px;
+}
+
+.guide li {
+  margin-bottom: 10px;
+}
+
+/* Add these styles to your existing CSS file */
+
+@keyframes subtleShake {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(1px, 1px) rotate(0.5deg); }
+  50% { transform: translate(0, -1px) rotate(-0.5deg); }
+  75% { transform: translate(-1px, 0) rotate(0.5deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.subtle-shake {
+  animation: subtleShake 3s ease-in-out infinite;
+  display: inline-block;
+}
+
+.spread-on-hover {
+  transition: letter-spacing 0.3s ease;
+}
+
+.spread-on-hover:hover {
+  letter-spacing: 10px;
+}
+
+/* Update the existing styles for the landing page */
+.landing {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.landing h1 {
+    font-size: 4rem;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+}
+
+/* Remove the styles for .landing p since we've removed that element */
+
+.cta-button {
+    margin-top: 20px;
+}
+
+/* Existing styles... */
+
+/* Add these styles at the end of your existing CSS file */
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  /* Header and Navigation */
+  header {
+    position: absolute;
+    padding: 10px 0;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  nav ul {
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0 10px;
+  }
+
+  nav ul li {
+    margin: 0;
+  }
+
+  nav ul li a {
+    font-size: 14px;
+    padding: 5px;
+  }
+
+  main {
+    padding-top: 60px; /* Adjust this value based on your header height */
+  }
+
+  .products h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  #product-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .product-card {
+    max-width: none;
+  }
+
+  /* Landing Page */
+  .landing h1 {
+    font-size: 2.5rem;
+  }
+
+  .cta-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+
+  /* Product Grid */
+  #product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-card {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  /* Contact Page */
+  .contact-options {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .contact-button {
+    width: 80%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  /* Guide Page */
+  .guide {
+    padding: 10px;
+  }
+
+  .guide h2 {
+    font-size: 1.5rem;
+  }
+
+  .guide ol {
+    padding-left: 20px;
+  }
+
+  /* Custom Cursor */
+  .custom-cursor,
+  .custom-cursor-dot {
+    display: none;
+  }
+}
+
+/* Additional adjustments for very small screens */
+@media (max-width: 480px) {
+  .landing h1 {
+    font-size: 2rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .product-card h3 {
+    font-size: 0.9rem;
+  }
+
+  .product-card p {
+    font-size: 1rem;
+  }
+
+  nav ul li a {
+    font-size: 12px;
+  }
+
+  .products h1 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Update these existing styles and add new ones */
+
+/* Smooth transitions for all elements */
+* {
+    transition: all 0.3s ease;
+}
+
+/* Navigation hover effect */
+nav ul li a {
+    position: relative;
+    overflow: hidden;
+    transition: color 0.3s ease;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #fff;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+nav ul li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Update the shake animation to be more subtle */
+@keyframes subtleShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-2px); }
+    75% { transform: translateX(2px); }
+}
+
+.shake-on-hover:hover {
+    animation: subtleShake 2s ease-in-out infinite;
+}
+
+/* Update the spread-on-hover effect */
+.spread-on-hover {
+    transition: letter-spacing 0.5s ease, color 0.3s ease;
+}
+
+.spread-on-hover:hover {
+    letter-spacing: 5px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Smooth glitch effect */
+@keyframes subtleGlitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-1px, 1px); }
+    40% { transform: translate(-1px, -1px); }
+    60% { transform: translate(1px, 1px); }
+    80% { transform: translate(1px, -1px); }
+    100% { transform: translate(0); }
+}
+
+h1:hover {
+    animation: subtleGlitch 2s ease-in-out infinite;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Update styles for buttons */
+.cta-button,
+.product-link,
+.contact-button {
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.cta-button:hover,
+.product-link:hover,
+.contact-button:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #000;
+    transform: translateY(-2px);
+}
+
+/* Update contact button hover effects */
+.contact-button:hover img {
+    transform: scale(1.05);
+}
+
+.contact-button:hover span {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Smooth scroll reveal animation */
+.animate-on-scroll {
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+/* Add this to your existing contact button styles */
+.contact-button.whatsapp {
+    background-color: #25D366;
+}
+
+.contact-button.whatsapp:hover {
+    background-color: #128C7E;
+}
+
+/* Update these styles in your CSS file */
+
+h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    transition: all 0.3s ease;
+    position: relative; /* Add this */
+}
+
+.spread-on-hover {
+    transition: letter-spacing 0.5s ease, color 0.3s ease;
+}
+
+.spread-on-hover:hover {
+    letter-spacing: 10px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Remove or comment out the glitch effect */
+/*
+@keyframes subtleGlitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-1px, 1px); }
+    40% { transform: translate(-1px, -1px); }
+    60% { transform: translate(1px, 1px); }
+    80% { transform: translate(1px, -1px); }
+    100% { transform: translate(0); }
+}
+
+h1:hover {
+    animation: subtleGlitch 2s ease-in-out infinite;
+    color: rgba(255, 255, 255, 0.9);
+}
+*/
+
+/* Add this new hover effect */
+h1:hover {
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Update the subtle shake animation */
+@keyframes subtleShake {
+    0%, 100% { transform: translate(0, 0); }
+    25% { transform: translate(-2px, 0); }
+    75% { transform: translate(2px, 0); }
+}
+
+.subtle-shake {
+    animation: subtleShake 3s ease-in-out infinite;
+    display: inline-block;
+}
+
+/* Remove the fadeIn animation for the landing page elements */
+.landing h1,
+.landing .cta-button {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Add these styles at the beginning of your CSS file */
+
+:root {
+    --bg-color: #000;
+    --text-color: #fff;
+    --header-bg: rgba(0, 0, 0, 0.8);
+    --card-bg: #1a1a1a;
+    --button-bg: #fff;
+    --button-text: #000;
+    --link-color: #fff;
+    --link-hover-color: #ccc;
+    --border-color: #fff;
+    --cursor-border: #fff;
+    --cursor-dot: #fff;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* Light mode styles */
+body.light-mode {
+    --bg-color: #fff;
+    --text-color: #000;
+    --header-bg: rgba(255, 255, 255, 0.8);
+    --card-bg: #f0f0f0;
+    --button-bg: #000;
+    --button-text: #fff;
+    --link-color: #000;
+    --link-hover-color: #333;
+    --border-color: #000;
+    --cursor-border: #000;
+    --cursor-dot: #000;
+}
+
+/* Mode toggle styles */
+.mode-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 20px;
+}
+
+.mode-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* Update existing styles to use CSS variables */
+header {
+    background-color: var(--header-bg);
+}
+
+nav ul li a {
+    color: var(--link-color);
+}
+
+nav ul li a:hover {
+    color: var(--link-hover-color);
+}
+
+.product-card {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+.product-card h3,
+.product-card p {
+    color: var(--text-color);
+}
+
+.product-link,
+.cta-button {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+}
+
+.contact-button {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+/* ... update other color properties as needed ... */
+
+/* Add these variables to your :root selector */
+:root {
+    /* ... existing variables ... */
+    --cursor-border: #fff;
+    --cursor-dot: #fff;
+}
+
+/* Update the light mode variables */
+body.light-mode {
+    /* ... existing light mode variables ... */
+    --cursor-border: #000;
+    --cursor-dot: #000;
+}
+
+/* Update the custom cursor styles */
+.custom-cursor {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--cursor-border);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: all 0.1s ease, border-color 0.3s ease;
+}
+
+.custom-cursor-dot {
+    width: 4px;
+    height: 4px;
+    background-color: var(--cursor-dot);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: background-color 0.3s ease;
+}
+
+/* Add these styles to your existing CSS file */
+
+.background-images {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1s ease, transform 10s ease;
+    transform: scale(1.05);
+}
+
+.background-image.active {
+    opacity: 0.2;
+    animation: subtleMove 20s infinite alternate ease-in-out;
+}
+
+@keyframes subtleMove {
+    0% {
+        transform: scale(1.05) translate(0, 0);
+    }
+    100% {
+        transform: scale(1.05) translate(10px, 10px);
+    }
+}
+
+/* ... rest of your CSS ... */
+
