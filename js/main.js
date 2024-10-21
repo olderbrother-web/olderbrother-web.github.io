@@ -102,13 +102,11 @@ function setupModeToggle() {
 
     // Set initial mode
     body.classList.add(currentMode + '-mode');
-    modeToggle.textContent = currentMode === 'dark' ? '☀️' : '🌙';
 
     modeToggle.addEventListener('click', () => {
         body.classList.toggle('light-mode');
         const newMode = body.classList.contains('light-mode') ? 'light' : 'dark';
         localStorage.setItem('mode', newMode);
-        modeToggle.textContent = newMode === 'dark' ? '☀️' : '🌙';
         
         // Update cursor color
         updateCursorColor();
@@ -116,7 +114,10 @@ function setupModeToggle() {
 }
 
 // Call setupModeToggle when the page loads
-window.addEventListener('load', setupModeToggle);
+window.addEventListener('load', () => {
+    setupModeToggle();
+    // ... other initialization code ...
+});
 
 // Add this new function to update cursor color
 function updateCursorColor() {

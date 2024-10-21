@@ -74,26 +74,7 @@ async function renderProducts() {
     }
 }
 
-// Mode toggle functionality
-function setupModeToggle() {
-    const modeToggle = document.getElementById('modeToggle');
-    const body = document.body;
-    const currentMode = localStorage.getItem('mode') || 'dark';
-
-    // Set initial mode
-    body.classList.add(currentMode + '-mode');
-    modeToggle.textContent = currentMode === 'dark' ? '☀️' : '🌙';
-
-    modeToggle.addEventListener('click', () => {
-        body.classList.toggle('light-mode');
-        const newMode = body.classList.contains('light-mode') ? 'light' : 'dark';
-        localStorage.setItem('mode', newMode);
-        modeToggle.textContent = newMode === 'dark' ? '☀️' : '🌙';
-    });
-}
-
-// Call renderProducts and setupModeToggle when the page loads
+// Call renderProducts when the page loads
 window.addEventListener('load', () => {
     renderProducts();
-    setupModeToggle();
 });
