@@ -3,32 +3,34 @@ const productsPerPage = 20; // Adjust this based on the API's default
 
 // Fetch products using corsproxy.io to bypass CORS
 async function fetchProducts(page) {
-    const targetUrl = 'https://front.superbuy.com/shoppingguide/get-shop-goods-list';
-    const params = new URLSearchParams({
-        shopId: "36347402",
-        sellerPlatform: "TB",
-        priceSort: "0",
-        priceStart: "0",
-        priceEnd: "0",
-        currPage: page.toString(),
-        pageSize: "100" // Fetch 100 items per page
-    });
-    const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(targetUrl + '?' + params)}`;
-    
-    try {
-        const response = await fetch(proxyUrl, {
-            method: 'GET',
+    try {   
+        const joyabuyUrl = `https://joyabuy.com/search-info/get-tb-shop-full?ShopId=36347402&Page=${page}&Language=en`;
+        const encodedUrl = encodeURIComponent(joyabuyUrl);
+        const response = await fetch(`https://api.codetabs.com/v1/proxy/?quest=${encodedUrl}`, {
             headers: {
-                'Accept': 'application/json, text/plain, */*',
-            }
+                'accept': 'application/json',
+                'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36',
+            },
         });
 
         if (!response.ok) {
-            throw new Error('Failed to fetch products');
+            throw new Error(`Failed to fetch products: ${response.status} ${response.statusText}`);
         }
 
         const data = await response.json();
-        return data.data;
+        if (!data.data?.shopProducts?.productList) {
+            throw new Error('Invalid response format');
+        }
+
+        return {
+            resultList: data.data.shopProducts.productList.map(product => ({
+                img: product.imgUrl,
+                title: product.name,
+                discountPrice: product.discountPrice,
+                currencyCode: 'CNY',
+                href: `https://item.taobao.com/item.htm?id=${product.id}`
+            }))
+        };
     } catch (error) {
         console.error('Error fetching products:', error);
         return null;
